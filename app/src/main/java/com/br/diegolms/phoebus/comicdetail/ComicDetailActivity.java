@@ -19,6 +19,9 @@ public class ComicDetailActivity extends AppCompatActivity implements ComicDetai
 
     private Result result;
 
+    private String path;
+    private String extension;
+
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportPostponeEnterTransition();
@@ -26,13 +29,14 @@ public class ComicDetailActivity extends AppCompatActivity implements ComicDetai
         setContentView(R.layout.activity_comic_detail);
         ButterKnife.bind(this);
 
-        result = (Result) getIntent().getExtras().get("comic");
+        path =  getIntent().getExtras().getString("thumbnail");
+        extension =  getIntent().getExtras().getString("extension");
         showComicInfo();
     }
 
     private void showComicInfo() {
 
-            String url = result.getThumbnail().getPath()+"/standard_medium."+result.getThumbnail().getExtension();
+            String url = path+"/standard_medium."+extension;
 
             Glide.with(this)
                 .load(url)

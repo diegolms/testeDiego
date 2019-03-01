@@ -7,5 +7,5 @@ import javax.inject.Singleton;
 
 @Singleton @Component(modules = { ComicDetailModule.class })
 public interface ComicDetailComponent {
-    void inject(ComicDetailContract movieDetailActivity);
+    void inject(ComicDetailContract comicDetailActivity);
 }

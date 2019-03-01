@@ -22,11 +22,7 @@ public class ComicsPresenter implements ComicsContract.Presenter {
     private ComicsContract.View comicsView;
 
     DataManager dataManager;
-    private int currentPage;
-    private int totalPages;
     private List<Result> comicsList;
-    private boolean notLoadContentByNetProblem = false;
-    private String discoverSortedBy;
 
     CompositeDisposable subscriptions;
 
@@ -46,10 +42,10 @@ public class ComicsPresenter implements ComicsContract.Presenter {
 
     private void loadComicsDiscoverList() {
         comicsList.removeAll(comicsList);
-        loadComicDiscover(currentPage);
+        loadComicDiscover();
     }
 
-    private void loadComicDiscover(int page) {
+    private void loadComicDiscover() {
 
         Observable<Marvel> marvelObservable;
         marvelObservable = dataManager.getMarvel();
@@ -65,7 +61,6 @@ public class ComicsPresenter implements ComicsContract.Presenter {
             @Override
             public void accept(Integer integer) throws Exception {
                 comicsView.goToComicDetailsActivity(comicsList.get(integer), integer);
-                Log.d(Constants.TAG, "");
             }
         });
     }

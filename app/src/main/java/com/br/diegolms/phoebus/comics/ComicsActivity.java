@@ -91,7 +91,8 @@ public class ComicsActivity extends AppCompatActivity implements ComicsContract.
     @Override
     public void goToComicDetailsActivity(Result result, int position) {
         Intent in = new Intent(this, ComicDetailActivity.class);
-        //in.putExtra("comic", (Serializable) result);
+        in.putExtra("thumbnail", result.getThumbnail().getPath());
+        in.putExtra("extension", result.getThumbnail().getExtension());
         startActivity(in);
     }
 

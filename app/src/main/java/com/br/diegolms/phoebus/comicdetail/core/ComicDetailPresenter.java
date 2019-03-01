@@ -8,17 +8,14 @@ public class ComicDetailPresenter implements ComicDetailContract.Presenter {
 
     private ComicDetailContract.View comicDetailView;
     private DataManager dataManager;
-    private CompositeDisposable subscriptionsTrailer;
 
     public ComicDetailPresenter(ComicDetailContract.View movieDetailView, DataManager dataManager,
                                 CompositeDisposable subs) {
         this.comicDetailView = movieDetailView;
-        this.subscriptionsTrailer = subs;
         this.dataManager = dataManager;
     }
 
 
     @Override public void onDestroy() {
-        subscriptionsTrailer.clear();
     }
 }
